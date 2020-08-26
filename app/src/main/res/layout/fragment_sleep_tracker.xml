@@ -14,28 +14,32 @@
   ~ limitations under the License.
   -->
 
-<!-- Wrapping the layout into /layout to make it available with data binding. -->
+
+
+    <!-- Start of the visible fragment layout using ConstraintLayout -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- Data to make available to the XML via data binding. In this case,
          the whole ViewModel, so that we can access the LiveData,
          click handlers, and state variables. -->
     <data>
-
         <variable
             name="sleepTrackerViewModel"
             type="com.example.android.trackmysleepquality.sleeptracker.SleepTrackerViewModel" />
     </data>
-
     <!-- Start of the visible fragment layout using ConstraintLayout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".sleeptracker.SleepTrackerFragment">
 
-        <!-- TODO (01) Remove the layoutManager attribute from the RecyclerView. -->
+
+    android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".sleeptracker.SleepTrackerFragment">
+
+        <!-- DONE (01) Remove the layoutManager attribute from the RecyclerView. -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/sleep_list"
             android:layout_width="0dp"
