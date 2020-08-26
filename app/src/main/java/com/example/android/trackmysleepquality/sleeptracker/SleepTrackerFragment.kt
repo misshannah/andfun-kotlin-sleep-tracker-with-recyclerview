@@ -65,7 +65,7 @@ class SleepTrackerFragment : Fragment() {
 
         // Add an Observer on the state variable for showing a Snackbar message
         // when the CLEAR button is pressed.
-        sleepTrackerViewModel.showSnackBarEvent.observe(this, Observer {
+        sleepTrackerViewModel.showSnackBarEvent.observe(viewLifecycleOwner, Observer {
             if (it == true) { // Observed state is true.
                 Snackbar.make(
                         activity!!.findViewById(android.R.id.content),
@@ -97,10 +97,17 @@ class SleepTrackerFragment : Fragment() {
             }
         })
 
-        // TODO (04) Create a new SleepNightAdapter variable,
+        val adapter = SleepNightAdapter()
+        binding.sleepList.adapter = adapter
+
+        sleepTrackerViewModel.nights.observe(viewLifecycleOwner, Observer {
+            it?.let { adapter.data = it }
+        })
+
+        // DONE (04) Create a new SleepNightAdapter variable,
         // and bind it to the RecyclerView’s Adapter.
 
-        // TODO (05) Create an observer on sleepTrackerViewModel.nights that tells
+        // DONE (05) Create an observer on sleepTrackerViewModel.nights that tells
         // the Adapter when there is new data.
 
         return binding.root
